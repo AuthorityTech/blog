@@ -36,7 +36,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     const sheets = getSheetsClient();
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: SHEET_ID,
-      range: `${SHEET_NAME}!A:J`,
+      range: `${SHEET_NAME}!A:K`,
     });
 
     const rows = response.data.values || [];

@@ -56,6 +56,12 @@ export default async function BlogPost({ params }: Props) {
 
   return (
     <div className="min-h-dvh bg-background">
+      {post.jsonLdSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: post.jsonLdSchema }}
+        />
+      )}
       <article className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         <div className="mb-10">
           <Link
@@ -105,13 +111,6 @@ export default async function BlogPost({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: post.body }}
         />
       </article>
-
-      {post.jsonLdSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: post.jsonLdSchema }}
-        />
-      )}
 
       <footer className="border-t border-border mt-24 bg-background">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 text-center text-muted-foreground font-ui text-xs">
