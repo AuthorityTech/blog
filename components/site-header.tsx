@@ -16,19 +16,17 @@ export function SiteHeader() {
           <div className="flex items-center flex-shrink-0">
             <Link
               href={MAIN_SITE}
-              className="flex items-center transition-opacity duration-150 ease-out hover:opacity-80 focus:outline-none focus:ring-1 focus:ring-border focus:ring-offset-0 rounded"
+              className="flex items-center p-0 transition-opacity duration-150 ease-out hover:opacity-80 focus:outline-none focus:ring-1 focus:ring-border focus:ring-offset-0 rounded"
               aria-label="AuthorityTech home"
             >
-              <span className="block w-[152px] shrink-0 overflow-hidden">
-                <Image
-                  src="/logo.png"
-                  alt=""
-                  width={160}
-                  height={32}
-                  className="h-8 w-auto -translate-x-2 object-contain object-left invert dark:invert-0"
-                  priority
-                />
-              </span>
+              <Image
+                src="/logo.png"
+                alt=""
+                width={100}
+                height={20}
+                className="block h-5 w-auto object-contain object-left leading-none invert dark:invert-0"
+                priority
+              />
             </Link>
           </div>
           <div className="flex items-center gap-2">

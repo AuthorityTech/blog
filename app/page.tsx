@@ -8,8 +8,8 @@ export default async function Home() {
 
   return (
     <div className="min-h-dvh bg-background">
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-16 md:py-24">
-        <header className="mb-16">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+        <header className="mb-10">
           <h1 className="text-2xl font-medium tracking-tight font-serif text-foreground text-balance">
             Blog
           </h1>

@@ -113,7 +113,7 @@ function PostCard({ post }: { post: BlogPost }) {
             src={post.featuredImage}
             alt={post.featuredImageAlt || post.title}
             fill
-            className="object-cover"
+            className="object-cover dark:contrast-110"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           <div
