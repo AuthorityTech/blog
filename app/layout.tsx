@@ -29,8 +29,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Blog",
+        "@id": "https://blog.authoritytech.io/#blog",
+        "name": "AuthorityTech Blog",
+        "url": "https://blog.authoritytech.io",
+        "description": "Expert insights on Performance PR, GEO, and AI Search visibility.",
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://authoritytech.io/#organization",
+          "name": "AuthorityTech",
+          "url": "https://authoritytech.io"
+        },
+        "author": {
+          "@type": "Person",
+          "@id": "https://jaxonparrott.com/#person",
+          "name": "Jaxon Parrott",
+          "url": "https://jaxonparrott.com"
+        }
+      }
+    ]
+  };
+
   return (
     <html lang="en" className={`${lora.variable} ${manrope.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased font-ui text-foreground bg-background">
         <ThemeProviders>
           <SiteHeader />
