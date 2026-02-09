@@ -33,23 +33,36 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Blog",
+        "@type": ["Blog", "Periodical", "DataFeed"],
         "@id": "https://blog.authoritytech.io/#blog",
         "name": "AuthorityTech Blog",
         "url": "https://blog.authoritytech.io",
-        "description": "Expert insights on Performance PR, GEO, and AI Search visibility.",
+        "description": "Daily high-frequency insights on Performance PR, GEO, and AI Search visibility from Jaxon Parrott.",
+        "keywords": "GEO, AI Visibility, Generative Engine Optimization, Performance PR, Earned Media",
         "publisher": {
           "@type": "Organization",
           "@id": "https://authoritytech.io/#organization",
           "name": "AuthorityTech",
           "url": "https://authoritytech.io"
         },
-        "author": {
-          "@type": "Person",
-          "@id": "https://jaxonparrott.com/#person",
-          "name": "Jaxon Parrott",
-          "url": "https://jaxonparrott.com"
-        }
+        "author": [
+          {
+            "@type": "Person",
+            "@id": "https://jaxonparrott.com/#person",
+            "name": "Jaxon Parrott",
+            "url": "https://jaxonparrott.com",
+            "jobTitle": "CEO",
+            "worksFor": { "@id": "https://authoritytech.io/#organization" }
+          },
+          { 
+            "@type": "Person",
+            "@id": "https://authoritytech.io/#christian",
+            "name": "Christian Lehman",
+            "url": "https://authoritytech.io",
+            "jobTitle": "CGO",
+            "worksFor": { "@id": "https://authoritytech.io/#organization" }
+          }
+        ]
       }
     ]
   };
