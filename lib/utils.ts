@@ -10,6 +10,7 @@ const BLOG_BASE_URL = "https://blog.authoritytech.io";
 /**
  * Normalizes JSON-LD from the sheet so required SEO fields are always correct:
  * mainEntityOfPage (blog.authoritytech.io), dateModified, author (Person).
+ * Handles both flat schemas and @graph-based schemas.
  */
 export function normalizeBlogPostJsonLd(
   jsonLdSchema: string,
@@ -20,18 +21,37 @@ export function normalizeBlogPostJsonLd(
     const data = JSON.parse(jsonLdSchema) as Record<string, unknown>;
     const postUrl = `${BLOG_BASE_URL}/${slug}`;
 
-    data.mainEntityOfPage = {
+    // Determine the target node: if @graph exists, find the Article/BlogPosting node
+    let target: Record<string, unknown> = data;
+
+    if (Array.isArray(data["@graph"])) {
+      const graph = data["@graph"] as Record<string, unknown>[];
+      const article = graph.find((node) => {
+        const t = node["@type"];
+        return (
+          t === "Article" ||
+          t === "BlogPosting" ||
+          (Array.isArray(t) &&
+            (t.includes("Article") || t.includes("BlogPosting")))
+        );
+      });
+      if (article) {
+        target = article;
+      }
+    }
+
+    target.mainEntityOfPage = {
       "@type": "WebPage",
       "@id": postUrl,
     };
 
-    if (!data.dateModified && data.datePublished) {
-      data.dateModified = data.datePublished;
-    } else if (!data.dateModified) {
-      data.dateModified = publishDate;
+    if (!target.dateModified && target.datePublished) {
+      target.dateModified = target.datePublished;
+    } else if (!target.dateModified) {
+      target.dateModified = publishDate;
     }
 
-    data.author = {
+    target.author = {
       "@type": "Person",
       name: "Jaxon Parrott",
     };
