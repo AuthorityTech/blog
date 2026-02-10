@@ -109,8 +109,8 @@ export function generateJsonLd(post: BlogPost): string {
     "@id": `${postUrl}#article`,
     headline: post.title,
     description: post.description,
-    datePublished: post.publishDate,
-    dateModified: post.publishDate,
+    datePublished: new Date(post.publishDate + "T12:00:00Z").toISOString(),
+    dateModified: new Date(post.publishDate + "T12:00:00Z").toISOString(),
     author: AUTHOR,
     publisher: PUBLISHER,
     mainEntityOfPage: {
@@ -158,3 +158,4 @@ export function generateJsonLd(post: BlogPost): string {
     "@graph": graph,
   });
 }
+
