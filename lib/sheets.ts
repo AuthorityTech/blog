@@ -1,4 +1,5 @@
 import { google } from 'googleapis';
+import { cache } from 'react';
 
 const SHEET_ID = process.env.GOOGLE_SHEET_ID || '1r0URn41k3hP9iotA0DydX49uo_wlPpds5eYeO0skXxs';
 const SHEET_NAME = process.env.GOOGLE_SHEET_NAME || 'authoritytech_blog_pilots';
@@ -31,8 +32,10 @@ function getSheetsClient() {
   return google.sheets({ version: 'v4', auth });
 }
 
-export async function getAllPosts(): Promise<BlogPost[]> {
+// BEAST MODE: Cache the entire sheet fetch for the duration of the build
+export const getAllPosts = cache(async (): Promise<BlogPost[]> => {
   try {
+    console.log('Fetching fresh posts from Google Sheets...');
     const sheets = getSheetsClient();
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: SHEET_ID,
@@ -65,15 +68,16 @@ export async function getAllPosts(): Promise<BlogPost[]> {
           topic: post.topic || '',
         };
       })
-      .filter((post) => post.slug && post.title) // Only published posts with required fields
-      .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()); // Sort by newest first
+      .filter((post) => post.slug && post.title)
+      .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
   } catch (error) {
     console.error('Error fetching posts:', error);
     return [];
   }
-}
+});
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  // This now uses the cached result from getAllPosts()
   const posts = await getAllPosts();
   return posts.find((post) => post.slug === slug) || null;
 }
