@@ -13,7 +13,6 @@ export interface BlogPost {
   featuredImageFilename: string;
   publishDate: string;
   body: string;
-  jsonLdSchema: string;
   topic?: string;
 }
 
@@ -64,7 +63,6 @@ export const getAllPosts = cache(async (): Promise<BlogPost[]> => {
           featuredImageFilename: post['featured-image-filename'] || '',
           publishDate: post['publish-date'] || '',
           body: post.body || '',
-          jsonLdSchema: post['json-ld-schema'] || '',
           topic: post.topic || '',
         };
       })
@@ -81,3 +79,4 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   const posts = await getAllPosts();
   return posts.find((post) => post.slug === slug) || null;
 }
+
