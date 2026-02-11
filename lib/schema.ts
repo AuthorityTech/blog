@@ -32,6 +32,7 @@ const PUBLISHER = {
     url: "https://authoritytech.io/logo.png",
   },
   sameAs: [
+    "https://machinerelations.ai",
     "https://x.com/authoritytechio",
     "https://linkedin.com/company/authoritytech",
     "https://github.com/AuthorityTech",
