@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://blog.authoritytech.io/sitemap.xml

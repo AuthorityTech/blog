@@ -87,8 +87,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ThemeProviders>
-          {/* We wrap in a dark-themed div to force the 'AI-Native' look without breaking Typescript */}
-          <div className="dark flex min-h-screen flex-col bg-background text-foreground">
+          <div className="flex min-h-screen flex-col bg-background text-foreground">
             <SiteHeader />
             <main className="flex-1 pt-14">{children}</main>
           </div>
