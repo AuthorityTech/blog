@@ -10,8 +10,8 @@
   --border: #e4e4e7;
   --muted-foreground: #71717a;
   --heading-foreground: #18181b;
-  --accent: #9a7b2a;
-  --accent-muted: rgba(154, 123, 42, 0.12);
+  --accent: #b49a60;
+  --accent-muted: rgba(180, 154, 96, 0.12);
 }
 
 html.dark {
@@ -22,8 +22,8 @@ html.dark {
   --border: #2a2828;
   --muted-foreground: #a1a1aa;
   --heading-foreground: #fafafa;
-  --accent: #d4c990;
-  --accent-muted: rgba(212, 201, 144, 0.1);
+  --accent: #b49a60;
+  --accent-muted: rgba(180, 154, 96, 0.1);
 }
 
 body {
