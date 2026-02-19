@@ -5,8 +5,8 @@ date: "2026-02-19"
 description: "Brands are 6.5x more likely to be cited by AI through third-party sources than their own domains. Here's why earned media—not your website—now drives AI visibility."
 topic: "Machine Relations"
 author: "Jaxon Parrott"
-featured_image: "https://storage.googleapis.com/authoritytech-prod-assets/public/cdn/2026-02-19-pr-citation-playbook.png"
-featured_image_alt: "A vast baroque network of media outlets and journalists feeding glowing streams of authority into an AI oracle engine, with a lone corporate website in shadow at the periphery"
+featured_image: "https://storage.googleapis.com/authoritytech-prod-assets/public/cdn/blog-pr-citation-playbook-2026.png"
+featured_image_alt: "A small isolated corporate website in shadow on the right, with an interconnected web of media outlets and publications on the left feeding into a central point, illustrating third-party dominance over owned content"
 ---
 
 <p>There's a number that changes everything about how you should be thinking about AI visibility: <strong>6.5x</strong>. That's how much more likely an AI engine is to cite your brand through a third-party source than through your own domain. Not 1.5x. Not 2x. Six and a half times.</p>
